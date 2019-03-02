@@ -1,0 +1,11 @@
+server:
+  port: 8888
+spring:
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          searchLocations: file:///Users/sandeep/code/spring/microservices-example/config-service/src/main/resources/config
+
