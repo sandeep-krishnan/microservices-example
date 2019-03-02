@@ -1,0 +1,14 @@
+server:
+  port: 8081
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+spring:
+  profiles:
+    active: default
+  application:
+    name: catalog-service
