@@ -16,10 +16,12 @@ public class CatalogServiceApplication {
     @Bean
     public CommandLineRunner demoData(ProductRepository repository) {
         return args -> {
-            Product product = new Product();
-            product.setName("Rice");
-            product.setDescription("Lots of rice");
-            repository.save(product);
+            if (repository.count() == 0) {
+                Product product = new Product();
+                product.setName("Rice");
+                product.setDescription("Lots of rice");
+                repository.save(product);
+            }
         };
     }
 }
