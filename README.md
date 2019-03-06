@@ -6,6 +6,10 @@ mvn install ;
 docker-compose build;  
 docker-compose up;  
 
+# Testing
+1) Check if services are properly registered in discovery service - http://localhost:18761
+2) Check if properties are set correctly - http://localhost:18888/image-service/default 
+
 # Debugging
 ## Docker commands 
 
