@@ -1,0 +1,23 @@
+server:
+  port: 8082
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+spring:
+  profiles:
+    active: default
+  application:
+    name: image-service
+
+  cloud:
+    config:
+      uri: http://localhost:8888
+      retry:
+        initial-interval: 2000
+        max-attempts: 5
+        multiplier: 1.1
+      fail-fast: true
