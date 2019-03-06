@@ -31,3 +31,8 @@ services:
       interval: 30s
       timeout: 10s
       retries: 5
+
+  discovery-service:
+    build: ./discovery-service
+    ports:
+      - "18761:8761"
