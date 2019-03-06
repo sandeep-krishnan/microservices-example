@@ -1,0 +1,9 @@
+server:
+  port: 8761
+eureka:
+  client:
+    register-with-eureka: false
+    #don't cache registry info
+    fetch-registry: false
+    server:
+      waitTimeInMsWhenSyncEmpty: 5
