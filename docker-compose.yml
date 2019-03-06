@@ -36,3 +36,11 @@ services:
     build: ./discovery-service
     ports:
       - "18761:8761"
+
+  image-service:
+    build: ./image-service
+    ports:
+      - "18082:8082"
+    depends_on:
+      - config-service
+    restart: on-failure

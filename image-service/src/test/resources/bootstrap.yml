@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: test
   cloud:
     config:
       uri: http://localhost:8888
@@ -6,4 +8,4 @@ spring:
         initial-interval: 2000
         max-attempts: 5
         multiplier: 1.1
-      fail-fast: true
+      fail-fast: false
