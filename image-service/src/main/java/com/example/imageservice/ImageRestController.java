@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Arrays;
 import java.util.Collection;
 
-@RestController("/api/image")
+@RestController("/api/images")
 public class ImageRestController {
 
   @GetMapping
