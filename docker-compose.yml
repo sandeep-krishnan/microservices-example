@@ -20,6 +20,7 @@ services:
     depends_on:
       - config-service
       - postgres
+      - image-service
     restart: on-failure
 
   config-service:
