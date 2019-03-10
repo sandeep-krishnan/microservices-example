@@ -16,11 +16,11 @@ public class ProductRestController {
     private ProductRepository productRepository;
 
     @Autowired
-    private ImageRestClient imageClient;
+    private ImageService imageService;
 
     @GetMapping("{id}")
     public Product getProduct(@PathVariable("id") Long id) {
-        Collection<String> imageNames = imageClient.getImageNames();
+        Collection<String> imageNames = imageService.getImageNames();
         System.out.println("Image names are " + imageNames);
         return productRepository.findById(id).orElse(null);
     }

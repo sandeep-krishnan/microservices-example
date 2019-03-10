@@ -11,6 +11,11 @@ public class ImageRestController {
 
   @GetMapping
   public Collection<String> getImageName() {
+    try {
+      Thread.sleep(15000);
+    } catch (InterruptedException e) {
+    }
+
     return Arrays.asList("Taj Mahal", "Great Wall of China");
   }
 }
