@@ -1,4 +1,4 @@
-package com.example.catalogservice;
+package com.example.catalog;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
