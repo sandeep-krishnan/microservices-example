@@ -18,6 +18,11 @@ public class ProductRestController {
     @Autowired
     private ImageService imageService;
 
+    @GetMapping
+    public Collection<Product> getAllProducts() {
+        return productRepository.findAll();
+    }
+
     @GetMapping("{id}")
     public Product getProduct(@PathVariable("id") Long id) {
         Collection<String> imageNames = imageService.getImageNames();
