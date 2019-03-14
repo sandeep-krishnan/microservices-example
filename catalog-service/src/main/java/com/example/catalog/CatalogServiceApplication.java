@@ -24,6 +24,13 @@ public class CatalogServiceApplication {
                 Product product = new Product();
                 product.setName("Rice");
                 product.setDescription("Lots of rice");
+                product.setImageId(1L);
+                repository.save(product);
+
+                product = new Product();
+                product.setName("Rice");
+                product.setDescription("Lots of rice");
+                product.setImageId(2L);
                 repository.save(product);
             }
         };
