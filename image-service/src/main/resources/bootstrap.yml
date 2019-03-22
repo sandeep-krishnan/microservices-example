@@ -21,13 +21,3 @@ spring:
         max-attempts: 5
         multiplier: 1.1
       fail-fast: true
-
-    stream:
-      kafka:
-        binder:
-          zkNodes: localhost
-          brokers: localhost
-        bindings:
-          output:
-            destination: imageChangeTopic
-            content-type: application/json
