@@ -22,8 +22,8 @@ public class ImageServiceApplication {
   public CommandLineRunner insertDefaultData() {
     return args -> {
       if (imageRepository.count() == 0) {
-        imageRepository.save(new Image("Taj Mahal"));
-        imageRepository.save(new Image("Great Wall of China"));
+        imageRepository.save(new Image("1", "Taj Mahal"));
+        imageRepository.save(new Image("2", "Great Wall of China"));
       }
     };
   }

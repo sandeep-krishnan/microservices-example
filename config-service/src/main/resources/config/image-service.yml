@@ -15,7 +15,7 @@ spring:
       authentication-database: admin
       username: root
       password: admin
-      database: images
+      database: image-service
 
   cloud:
     stream:

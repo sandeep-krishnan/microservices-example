@@ -13,6 +13,11 @@ public class Image {
   private String id;
   private String name;
 
+  public Image(String id, String name) {
+    this.id = id;
+    this.name = name;
+  }
+
   public Image(String name) {
     this.name = name;
   }
