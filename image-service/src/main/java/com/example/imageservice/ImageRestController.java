@@ -4,10 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.constraints.NotEmpty;
 import java.util.Collection;
 
 @RestController
@@ -29,6 +31,17 @@ public class ImageRestController {
   @GetMapping(path = "{id}")
   public Image getImage(@PathVariable("id") String id) {
     return imageRepository.findById(id).orElse(null);
+  }
+
+  @PutMapping(path = "{id}")
+  public Image updateImage(@PathVariable("id") String id, @RequestBody @NotEmpty String imageName) {
+    Image image = imageRepository.findById(id).orElse(null);
+    if (image == null) {
+      return null;
+    }
+
+    image.setName(imageName);
+    return imageRepository.save(image);
   }
 
   @PostMapping("")
