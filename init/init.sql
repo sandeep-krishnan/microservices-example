@@ -1,6 +1,3 @@
-drop table product;
-
-drop sequence product_pkey_sequence;
 
 create table product
 (
