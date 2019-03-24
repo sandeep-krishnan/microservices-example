@@ -14,6 +14,16 @@ spring:
         jdbc:
           lob:
             non_contextual_creation: true
+  cloud:
+    stream:
+      kafka:
+        binder:
+          zkNodes: kafka1
+          brokers: kafka1
+        bindings:
+          imageChangeTopic-out:
+            destination: imageChangeTopic-out
+            content-type: application/json
 
 eureka:
   instance:

@@ -15,11 +15,17 @@ public class ImageServiceImpl implements ImageService {
 
     @Override
     @HystrixCommand(fallbackMethod = "getBlankImageNames")
-    public Collection<String> getImageNames() {
+    public Collection<Image> getImageNames() {
         return imageClient.getImageNames();
     }
 
-    public Collection<String> getBlankImageNames() {
+    public Collection<Image> getBlankImageNames() {
         return Collections.emptyList();
+    }
+
+    @Override
+    @HystrixCommand
+    public Image getImageById(String id) {
+        return imageClient.getImageById(id);
     }
 }

@@ -18,5 +18,5 @@ public class Product {
 
     private String description;
 
-    private Long imageId;
+    private String imageId;
 }

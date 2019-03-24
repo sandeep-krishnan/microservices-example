@@ -11,6 +11,11 @@ spring:
   cloud:
     config:
       enabled: true
+    stream:
+      kafka:
+        binder:
+          zkNodes: localhost
+          brokers: localhost
   jpa:
     properties:
       hibernate:

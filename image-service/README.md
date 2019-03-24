@@ -19,12 +19,12 @@ Connect to mongo and execute the following commands
 switched to db admin  
 
 > db.createUser(  
-...   {  
-...     user: "root",  
-...     pwd: "admin",
-...     roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]  
-...   }  
-... );  
+   {  
+     user: "root",  
+     pwd: "admin",
+     roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]  
+   }  
+ );  
 Successfully added user: {  
 	"user" : "root",  
 	"roles" : [  
