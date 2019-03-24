@@ -18,6 +18,8 @@ public class ImageRestController {
 
   @Autowired private ImageRepository imageRepository;
 
+  @Autowired private SimpleSourceBean simpleSourceBean;
+
   @GetMapping("")
   public Collection<Image> getImages() {
     try {
@@ -41,7 +43,11 @@ public class ImageRestController {
     }
 
     image.setName(imageName);
-    return imageRepository.save(image);
+    image = imageRepository.save(image);
+
+    simpleSourceBean.publishChange("update", image.getId());
+
+    return image;
   }
 
   @PostMapping("")

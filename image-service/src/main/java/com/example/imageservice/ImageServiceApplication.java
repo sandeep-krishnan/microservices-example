@@ -5,11 +5,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.stream.annotation.EnableBinding;
-import org.springframework.cloud.stream.messaging.Source;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-@EnableBinding(Source.class)
+@EnableBinding(ImageStream.class)
 public class ImageServiceApplication {
 
   @Autowired private ImageRepository imageRepository;

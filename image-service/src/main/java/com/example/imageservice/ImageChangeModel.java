@@ -1,27 +1,16 @@
 package com.example.imageservice;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class ImageChangeModel {
   private String action;
-  private Long imageId;
+  private String imageId;
 
-  public ImageChangeModel(String action, Long imageId) {
+  public ImageChangeModel(String action, String imageId) {
     this.action = action;
-    this.imageId = imageId;
-  }
-
-  public String getAction() {
-    return action;
-  }
-
-  public void setAction(String action) {
-    this.action = action;
-  }
-
-  public Long getImageId() {
-    return imageId;
-  }
-
-  public void setImageId(Long imageId) {
     this.imageId = imageId;
   }
 }
