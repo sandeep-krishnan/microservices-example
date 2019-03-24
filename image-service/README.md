@@ -1,4 +1,5 @@
 # Testing
+## Mongo
 Check mongodb after application starts up  
 
 mongo --username root --password --authenticationDatabase admin --host localhost --port 27017  
@@ -34,3 +35,8 @@ Successfully added user: {
 	]  
 }  
 
+## Kafka
+The kafka topic is created automatically
+
+# Testing the message delivery
+> bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic imageChangeTopic-out --from-beginning
