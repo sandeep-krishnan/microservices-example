@@ -2,6 +2,7 @@ package com.example.catalog;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -25,7 +26,9 @@ public class ImageServiceImpl implements ImageService {
 
     @Override
     @HystrixCommand
+    @Cacheable(value= "imageCache", key= "#id")
     public Image getImageById(String id) {
+        System.out.println("Getting image " + id);
         return imageClient.getImageById(id);
     }
 }
