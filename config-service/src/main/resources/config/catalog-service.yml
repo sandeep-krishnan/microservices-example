@@ -11,7 +11,7 @@ spring:
   cache:
     type: redis
   redis:
-    host: localhost
+    host: cache
     port: 6379
   jpa:
     properties:
