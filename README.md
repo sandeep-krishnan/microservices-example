@@ -9,9 +9,11 @@ docker-compose up;
 # Testing
 1) Check if service discovery is working by invoking catalog-service   
 http://localhost:18080/catalog-service/api/products/1
+http://localhost:18080/image-service/api/images/1
 
-2) Direct API to the catalog-service  
+2) Direct API to the catalog-service or image-service
 http://localhost:18081/api/products/1
+http://localhost:18082/api/images/1
 
 3) Check if services are properly registered in discovery service  
 http://localhost:18761  
