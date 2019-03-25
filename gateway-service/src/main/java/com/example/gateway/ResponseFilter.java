@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 /**
  * This class is to add spring slethu's correlation id
  * into the http response header
+ * Courtesy - Spring Microservices in Action
  */
 @Component
 public class ResponseFilter extends ZuulFilter {
