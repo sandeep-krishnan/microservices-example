@@ -14,10 +14,10 @@ import org.springframework.stereotype.Component;
  * Courtesy - Spring Microservices in Action
  */
 @Component
-public class ResponseFilter extends ZuulFilter {
+public class GatewayResponseFilter extends ZuulFilter {
   private static final int FILTER_ORDER = 1;
   private static final boolean SHOULD_FILTER = true;
-  private static final Logger logger = LoggerFactory.getLogger(ResponseFilter.class);
+  private static final Logger logger = LoggerFactory.getLogger(GatewayResponseFilter.class);
   @Autowired
   Tracer tracer;
 
