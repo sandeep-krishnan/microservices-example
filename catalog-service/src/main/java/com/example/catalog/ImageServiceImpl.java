@@ -1,6 +1,8 @@
 package com.example.catalog;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -12,29 +14,30 @@ import java.util.Collections;
 @Service
 public class ImageServiceImpl implements ImageService {
 
-    @Autowired
-    private ImageRestClient imageClient;
+  private Logger logger = LoggerFactory.getLogger(ImageServiceImpl.class);
 
-    @Override
-    @HystrixCommand(fallbackMethod = "getBlankImageNames")
-    public Collection<Image> getImageNames() {
-        return imageClient.getImageNames();
-    }
+  @Autowired private ImageRestClient imageClient;
 
-    public Collection<Image> getBlankImageNames() {
-        return Collections.emptyList();
-    }
+  @Override
+  @HystrixCommand(fallbackMethod = "getBlankImageNames")
+  public Collection<Image> getImageNames() {
+    return imageClient.getImageNames();
+  }
 
-    @Override
-    @HystrixCommand
-    @Cacheable(value= "imageCache", key= "#id")
-    public Image getImageById(String id) {
-        System.out.println("Getting image " + id);
-        return imageClient.getImageById(id);
-    }
+  public Collection<Image> getBlankImageNames() {
+    return Collections.emptyList();
+  }
 
-    @CacheEvict(value= "imageCache", key= "#id")
-    public void evictCache(String id) {
-        System.out.println("Evicting image with id " + id);
-    }
+  @Override
+  @HystrixCommand
+  @Cacheable(value = "imageCache", key = "#id")
+  public Image getImageById(String id) {
+    logger.info("Getting image " + id);
+    return imageClient.getImageById(id);
+  }
+
+  @CacheEvict(value = "imageCache", key = "#id")
+  public void evictCache(String id) {
+    System.out.println("Evicting image with id " + id);
+  }
 }

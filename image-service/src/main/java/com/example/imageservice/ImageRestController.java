@@ -1,5 +1,7 @@
 package com.example.imageservice;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +17,8 @@ import java.util.Collection;
 @RestController
 @RequestMapping("/api/images")
 public class ImageRestController {
+
+  private Logger logger = LoggerFactory.getLogger(ImageRestController.class);
 
   @Autowired private ImageRepository imageRepository;
 
@@ -32,6 +36,7 @@ public class ImageRestController {
 
   @GetMapping(path = "{id}")
   public Image getImage(@PathVariable("id") String id) {
+    logger.info("Getting image id " + id);
     return imageRepository.findById(id).orElse(null);
   }
 
