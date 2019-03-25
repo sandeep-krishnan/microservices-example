@@ -24,14 +24,15 @@ public class ProductRestController {
     }
 
     @GetMapping("{id}")
-    public Product getProduct(@PathVariable("id") Long id) {
+    public ProductResponse getProduct(@PathVariable("id") Long id) {
         Product product = productRepository.findById(id).orElse(null);
 
+        Image image = null;
         if(product != null && product.getImageId() != null) {
-            Image image = imageService.getImageById(product.getImageId());
+            image = imageService.getImageById(product.getImageId());
             System.out.println("Image is " + image);
         }
 
-        return product;
+        return new ProductResponse(product, image);
     }
 }

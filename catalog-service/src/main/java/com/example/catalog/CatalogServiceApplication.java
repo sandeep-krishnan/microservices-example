@@ -18,34 +18,35 @@ import org.springframework.context.annotation.Bean;
 @EnableCaching
 public class CatalogServiceApplication {
 
-    @Autowired
-    private ImageService imageService;
+  @Autowired
+  private ImageService imageService;
 
-    @StreamListener(ImageStream.INPUT)
-    public void logImageChange(ImageChangeModel imageChangeModel) {
-        System.out.println("Received message " + imageChangeModel);
-        imageService.evictCache(imageChangeModel.getImageId());
-    }
-    public static void main(String[] args) {
-        SpringApplication.run(CatalogServiceApplication.class, args);
-    }
+  @StreamListener(ImageStream.INPUT)
+  public void logImageChange(ImageChangeModel imageChangeModel) {
+    System.out.println("Received message " + imageChangeModel);
+    imageService.evictCache(imageChangeModel.getImageId());
+  }
 
-    @Bean
-    public CommandLineRunner demoData(ProductRepository repository) {
-        return args -> {
-            if (repository.count() == 0) {
-                Product product = new Product();
-                product.setName("Rice");
-                product.setDescription("Lots of rice");
-                product.setImageId("1");
-                repository.save(product);
+  public static void main(String[] args) {
+    SpringApplication.run(CatalogServiceApplication.class, args);
+  }
 
-                product = new Product();
-                product.setName("Rice");
-                product.setDescription("Lots of rice");
-                product.setImageId("2");
-                repository.save(product);
-            }
-        };
-    }
+  @Bean
+  public CommandLineRunner demoData(ProductRepository repository) {
+    return args -> {
+      if (repository.count() == 0) {
+        Product product = new Product();
+        product.setName("Rice");
+        product.setDescription("Lots of rice");
+        product.setImageId("1");
+        repository.save(product);
+
+        product = new Product();
+        product.setName("Rice");
+        product.setDescription("Lots of rice");
+        product.setImageId("2");
+        repository.save(product);
+      }
+    };
+  }
 }
