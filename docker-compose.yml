@@ -50,6 +50,14 @@ services:
     ports:
       - "18761:8761"
 
+  gateway-service:
+    build: ./gateway-service
+    ports:
+      - "18080:8080"
+    restart: on-failure
+    depends_on:
+      - discovery-service
+
   image-service:
     build: ./image-service
     ports:
