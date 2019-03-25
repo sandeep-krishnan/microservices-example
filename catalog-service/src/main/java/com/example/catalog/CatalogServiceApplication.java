@@ -1,5 +1,6 @@
 package com.example.catalog;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,9 +18,13 @@ import org.springframework.context.annotation.Bean;
 @EnableCaching
 public class CatalogServiceApplication {
 
+    @Autowired
+    private ImageService imageService;
+
     @StreamListener(ImageStream.INPUT)
     public void logImageChange(ImageChangeModel imageChangeModel) {
         System.out.println("Received message " + imageChangeModel);
+        imageService.evictCache(imageChangeModel.getImageId());
     }
     public static void main(String[] args) {
         SpringApplication.run(CatalogServiceApplication.class, args);
