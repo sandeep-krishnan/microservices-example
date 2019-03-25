@@ -1,5 +1,7 @@
 package com.example.catalog;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -18,12 +20,14 @@ import org.springframework.context.annotation.Bean;
 @EnableCaching
 public class CatalogServiceApplication {
 
+  private static final Logger logger = LoggerFactory.getLogger(CatalogServiceApplication.class);
+
   @Autowired
   private ImageService imageService;
 
   @StreamListener(ImageStream.INPUT)
   public void logImageChange(ImageChangeModel imageChangeModel) {
-    System.out.println("Received message " + imageChangeModel);
+    logger.info("Received message " + imageChangeModel);
     imageService.evictCache(imageChangeModel.getImageId());
   }
 

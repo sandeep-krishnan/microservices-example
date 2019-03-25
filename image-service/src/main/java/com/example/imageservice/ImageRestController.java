@@ -18,7 +18,7 @@ import java.util.Collection;
 @RequestMapping("/api/images")
 public class ImageRestController {
 
-  private Logger logger = LoggerFactory.getLogger(ImageRestController.class);
+  private static final Logger logger = LoggerFactory.getLogger(ImageRestController.class);
 
   @Autowired private ImageRepository imageRepository;
 

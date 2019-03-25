@@ -14,7 +14,7 @@ import java.util.Collections;
 @Service
 public class ImageServiceImpl implements ImageService {
 
-  private Logger logger = LoggerFactory.getLogger(ImageServiceImpl.class);
+  private static final Logger logger = LoggerFactory.getLogger(ImageServiceImpl.class);
 
   @Autowired private ImageRestClient imageClient;
 
@@ -38,6 +38,6 @@ public class ImageServiceImpl implements ImageService {
 
   @CacheEvict(value = "imageCache", key = "#id")
   public void evictCache(String id) {
-    System.out.println("Evicting image with id " + id);
+    logger.info("Evicting image with id " + id);
   }
 }
